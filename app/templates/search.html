@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block body %}
+  
+{% if search %}
+Results Found
+    {% for i in search %}
+    <div class="col-lg-6 col-xl-4">
+        <div class="card mb-5 mb-xl-0">
+            <div class="card-body p-5">
+                <div class="small text-uppercase fw-bold text-muted">Free</div>
+                <div class="mb-3">
+                    <span class="display-4 fw-bold">$0</span>
+                    <span class="text-muted">/ mo.</span>
+                </div>
+
+                <ul class="list-unstyled mb-4">
+                    <li class="mb-2"> 
+                        <img src='{{i.Thumbnail.url}}' style="height: 100px;width: 200px;">
+                    </li>
+
+                    <li class="mb-2"> 
+                        <strong>{{i.Title}}</strong>                 
+                    </li>
+                    
+                    <li class="mb-2 text-muted">            
+                        <blockquote>{{i.Content}}</blockquote>
+                                <cite>-{{i.Author}}</cite>
+                    </li>
+
+                    <li class="mb-2 text-muted">
+                       {{i.Created_on}} 
+                    </li>
+              
+                    <!-- <li class="mb-2 text-muted">
+                        <i class="bi bi-x"></i>
+                        
+                    </li>
+                    <li class="text-muted">
+                        <i class="bi bi-x"></i>
+                  
+                    </li> -->
+                </ul>
+                <div class="d-grid"><a class="btn btn-outline-primary" href="/jump/{{i.id}}">Choose plan</a></div>
+            </div>
+        </div>
+    </div>
+   
+    {% endfor %}
+    {% else %}
+    Not Found
+{% endif %}
+    
+{% endblock body %}

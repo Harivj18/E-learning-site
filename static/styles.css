@@ -1,0 +1,21 @@
+
+    container {
+        color: #000;
+        overflow-x: hidden;
+        height: 100%;
+        background-color: #81D4FA;
+        background-repeat: no-repeat
+    }
+    
+    .cardbody {
+        width: 32%;
+        padding: 30px;
+        box-shadow: 0px 8px 16px 0px #1976D2;
+        max-width: 511px
+    }
+    
+    .card0 {
+        width: 100%;
+        padding-right: 30px;
+        box-shadow: none
+    }

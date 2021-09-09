@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Profile{% endblock title %}
+{% block body %}
+<style>
+    @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+font-family: 'Poppins', sans-serif;
+background: #fafafa;
+}
+
+p {
+font-family: 'Poppins', sans-serif;
+font-size: 1.1em;
+font-weight: 300;
+line-height: 1.7em;
+color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+color: inherit;
+text-decoration: none;
+transition: all 0.3s;
+}
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+        <a class="navbar-brand" href="#!">Free Learn</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'editprofile' %}">Edit</a></li>
+                <li class="nav-item"><a class="nav-link " href="{% url 'password_change' %}">Change Password</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<div class="container">
+    <div class="container-body">
+    <div class="card">
+    <div class="card-body">
+    <br>
+    {% if user.is_authenticated %}
+
+    <h1  style="text-align: center;">Hello Welcome to the Profile {{user.username}}</h1>  
+     <br>
+     <br>
+     <br>
+     <br>
+<table border='3' class="table table-dark">
+    <thead>
+        <tr>
+        <th colspan="2" style="text-align: center;">USER DETAILS</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Username</td>
+            <td>   {{user.username}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{user.email}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button type="{% url 'logout' %}" class="btn float-right btn-primary">Logout</button>
+
+</div>
+</div>
+</div>
+    {% endif %}
+<br>
+<br>
+<br>
+
+<div class="card">
+    <div class="card-header">
+       <h4 style="text-align: center;"> Free Learn Posts</h4>
+    </div>
+    <div class="card-body">
+        <table border="2" class="table table-dark">
+
+        <thead>
+            <tr>
+                <th>Posts</th>
+                <th>Author</th>
+                <th>Remove</th>
+                <th>Change</th>
+            </tr>
+           </thead>
+           <tbody>
+            {% for i in key %}
+           
+          
+               <tr>
+                   <td> {{i.Title}}</td>
+                   <td>{{i.Author}}</td>
+                   <td><a href="/delete/{{i.id}}">Delete</a></td>
+                   <td><a href="/update/{{i.id}}">Update</a></td>
+               </tr>
+               {% endfor %}
+           </tbody>
+           
+    </table>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  
+  <br>
+  <br>
+  <br>
+  
+    <div class="card">
+            <h2 class="bg-primary" style="text-align: center;">Enter Your Data</h2>
+        <div class="card-body">
+        <br>
+    <form method="POST" enctype="multipart/form-data">
+        {{mine|crispy}}
+        {% csrf_token %}
+        <button class="btn btn-danger">Submit</button>
+    </form>   
+<br>
+    <br>
+    <br><br>
+</div>
+</div>
+</div>
+<br>
+    {% include 'footer.html' %}
+
+
+  
+{% endblock body %}

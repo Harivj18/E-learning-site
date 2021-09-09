@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock title %}
+{% block body %}
+<style>
+  @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+font-family: 'Poppins', sans-serif;
+background: #fafafa;
+}
+
+p {
+font-family: 'Poppins', sans-serif;
+font-size: 1.1em;
+font-weight: 300;
+line-height: 1.7em;
+color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+color: inherit;
+text-decoration: none;
+transition: all 0.3s;
+}
+</style>
+{% include "nav.html" %}
+<br>
+  <div class="container">
+      <div class="card">
+          <h4 class="bg-warning" style="text-align: center;">About Us</h4>
+          <div class="card-body">
+              <h5 >Name : Hariharan A</h5>
+              <h5>Profession : Student</h5>
+              <h5>Mail : Hariharanamir1798@gmail.com</h5>
+              <br>
+              <h5 >Name : Jaganprathap N</h5>
+              <h5>Profession : Student</h5>
+              <h5>Mail : Jaganprathap10@gmail.com</h5>
+              <br>
+              <h5 >Name : Karthi R</h5>
+              <h5>Profession : Student</h5>
+              <h5>Mail : Rskarthi2017@gmail.com</h5>
+              <br>
+              <h5 >Name : Muralitharan P</h5>
+              <h5>Profession : Student</h5>
+              <h5>Mail : Muralislm@gmail.com</h5>
+              <p style="text-align: center;">Thanks for visiting our page !!!</p>
+
+
+          </div>
+
+</div>
+</div>
+<br>
+  {% include "footer.html" %}
+{% endblock body %}
